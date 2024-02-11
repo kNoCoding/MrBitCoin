@@ -1,10 +1,12 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-    <p>btcRate: ${{ btcRate }}</p>
-    <p>marketPriceHistory: {{ marketPriceHistory }}</p>
-    <p>avgBlockSize: {{ avgBlockSize }}</p>
-  </div>
+  <main>
+    <div class="about">
+      <h1>This is an about page</h1>
+      <p>btcRate: ${{ btcRate }}</p>
+      <p>marketPriceHistory: {{ marketPriceHistory }}</p>
+      <p>avgBlockSize: {{ avgBlockSize }}</p>
+    </div>
+  </main>
 </template>
 
 <script>
