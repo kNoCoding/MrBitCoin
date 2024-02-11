@@ -5,10 +5,6 @@ const RATE_KEY = 'btcRate'
 const PRICE_HISTORY_KEY = 'marketPriceHistory'
 const BLOCK_SIZE_KEY = 'averageBlockSize'
 
-const btcRateUrl = 'https://blockchain.info/tobtc?currency=USD&value=1'
-const marketPriceHistoryUrl = 'https://api.blockchain.info/charts/market-price?timespan=5months&format=json&cors=true'
-const averageBlockSizeUrl = 'https://api.blockchain.info/charts/avg-block-size?timespan=5months&format=json&cors=true'
-
 export const bitcoinService = {
     getRate,
     getMarketPriceHistory,
@@ -19,7 +15,7 @@ async function getRate() {
     const cachedRate = storageService.load(RATE_KEY)
     if (cachedRate) return cachedRate
     try {
-        const response = await axios.get(btcRateUrl)
+        const response = await axios.get('https://blockchain.info/tobtc?currency=USD&value=1')
         storageService.save(RATE_KEY, response.data)
         return response.data
     } catch (error) {
@@ -28,11 +24,11 @@ async function getRate() {
     }
 }
 
-async function getMarketPriceHistory() {
+async function getMarketPriceHistory(amount = 1, timePeriod = 'days') {
     const cachedMarketPriceHistory = storageService.load(PRICE_HISTORY_KEY)
     if (cachedMarketPriceHistory) return cachedMarketPriceHistory
     try {
-        const response = await axios.get(marketPriceHistoryUrl)
+        const response = await axios.get(`https://api.blockchain.info/charts/market-price?timespan=${amount}${timePeriod}&format=json&cors=true`)
         storageService.save(PRICE_HISTORY_KEY, response.data)
         console.log('response.data', response.data)
 
@@ -43,11 +39,11 @@ async function getMarketPriceHistory() {
     }
 }
 
-async function getAvgBlockSize() {
+async function getAvgBlockSize(amount = 3, timePeriod = 'weeks') {
     const cachedAverageBlockSize = storageService.load(BLOCK_SIZE_KEY)
     if (cachedAverageBlockSize) return cachedAverageBlockSize
     try {
-        const response = await axios.get(averageBlockSizeUrl)
+        const response = await axios.get(`https://api.blockchain.info/charts/avg-block-size?timespan=${amount}${timePeriod}&format=json&cors=true`)
         storageService.save(BLOCK_SIZE_KEY, response.data)
         console.log('response.data', response.data)
 
