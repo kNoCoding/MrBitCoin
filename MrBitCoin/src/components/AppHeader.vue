@@ -1,21 +1,47 @@
 <template>
     <header>
-        <p class="logo">MrBitCoin</p>
+        <p class="logo"><router-link to="/">MrBitCoin</router-link></p>
 
         <nav>
             <ul>
-                <li>home</li>
-                <li>about</li>
+                <li><router-link to="/">home</router-link></li>
+                <li><router-link to="/about">about</router-link></li>
             </ul>
         </nav>
 
-        <p>logged in user name</p>
+        <p>Hi, {{ userName }}</p>
 
-        <p>bitcoin exchange rate</p>
+        <p>BTC Rate:{{ btcRate }}</p>
     </header>
 </template>
 
-<script></script>
+<script>
+import { bitcoinService } from '@/services/bitcoin.service.js'
+import { userService } from '@/services/user.service.js'
+
+export default {
+    data() {
+        return {
+            userName: null,
+            btcRate: null,
+        }
+    },
+    async mounted() {
+        try {
+            this.userName = await userService.getUser().name
+        } catch (error) {
+            console.error('Error fetching the userName:', error)
+        }
+
+        try {
+            this.btcRate = await bitcoinService.getRate()
+        } catch (error) {
+            console.error('Error fetching the BTC rate:', error)
+        }
+    }
+
+}
+</script>
 
 <style scoped>
 header {
@@ -51,8 +77,14 @@ ul {
     list-style: none;
 }
 
-li {
+a {
     cursor: pointer;
     font-weight: 500;
+    color: darkorange;
+    text-decoration: none;
+
+    &:hover {
+        color: lightgray;
+    }
 }
 </style>
