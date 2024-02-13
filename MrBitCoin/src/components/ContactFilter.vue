@@ -2,6 +2,8 @@
     <p>Im the filter</p>
 </template>
 
-<script></script>
+<script>
+
+</script>
 
 <style scoped></style>
