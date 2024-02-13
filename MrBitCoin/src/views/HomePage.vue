@@ -2,8 +2,8 @@
   <main>
 
     <h1>Welcome {{ userName }}!</h1>
-    <h2>You're wallet balance is: {{ userBalance }}</h2>
-    <p>The current BTC rate is: {{ btcRate }}</p>
+    <p>You're wallet balance is: <b>{{ userBalance }}</b></p>
+    <p>The current BTC rate is: <b>{{ btcRate }}</b></p>
 
   </main>
 </template>
