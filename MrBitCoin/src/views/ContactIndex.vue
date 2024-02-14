@@ -1,13 +1,3 @@
-<template>
-    <main>
-
-        <h1>Im the contact page</h1>
-
-        <ContactFilter />
-        <ContactList v-if="contacts" :contacts="filteredContacts" />
-    </main>
-</template>
-
 <script >
 import ContactFilter from '@/components/ContactFilter.vue'
 import ContactList from '@/components/ContactList.vue'
@@ -43,6 +33,16 @@ export default {
 }
 
 </script>
+
+<template>
+    <main>
+
+        <h1>Im the contact page</h1>
+
+        <ContactFilter @filter="filterContacts"/>
+        <ContactList v-if="contacts" :contacts="filteredContacts" />
+    </main>
+</template>
 
 <style scoped>
 main {
