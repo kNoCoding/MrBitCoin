@@ -8,8 +8,7 @@
 
 <style scoped>
 footer {
-    padding: .5rem 1rem;
-    margin-block-start: 1rem;
+    padding: 16px;
 
     background-color: gray;
     font-weight: 500;

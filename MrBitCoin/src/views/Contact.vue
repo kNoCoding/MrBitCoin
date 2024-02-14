@@ -44,4 +44,9 @@ export default {
 
 </script>
 
-<style scoped></style>
+<style scoped>
+main {
+    overflow-y: auto;
+
+}
+</style>
