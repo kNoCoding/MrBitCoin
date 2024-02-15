@@ -13,6 +13,13 @@ export default {
         }
     },
     methods: {
+        async removeContact(contactId) {
+            await contactService.deleteContact(contactId)
+
+            const idx = this.contacts.findIndex(contact => contact._id === contactId)
+            this.contacts.splice(idx, 1)
+
+        },
         filterContacts(filterBy) {
             this.filterBy = filterBy
         },
@@ -39,8 +46,8 @@ export default {
 
         <h1>Im the contact page</h1>
 
-        <ContactFilter @filter="filterContacts"/>
-        <ContactList v-if="contacts" :contacts="filteredContacts" />
+        <ContactFilter @filter="filterContacts" />
+        <ContactList v-if="contacts" @remove="removeContact" :contacts="filteredContacts" />
     </main>
 </template>
 

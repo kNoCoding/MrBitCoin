@@ -1,14 +1,3 @@
-<template>
-    <section class="contact-list">
-        <h2>Contact list:</h2>
-        <ul>
-            <li v-for="contact in contacts">
-                <ContactPreview :contact="contact" />
-            </li>
-        </ul>
-    </section>
-</template>
-
 <script>
 import ContactPreview from './ContactPreview.vue'
 
@@ -21,14 +10,27 @@ export default {
         }
     },
     methods: {
-
+        onRemoveContact(contactId){
+            this.$emit('remove', contactId)
+        }
     },
     components: {
         ContactPreview,
     }
 }
-
 </script>
+
+<template>
+    <section class="contact-list">
+        <h2>Contact list:</h2>
+        <ul>
+            <li v-for="contact in contacts">
+                <ContactPreview :contact="contact" />
+                <button @click="onRemoveContact(contact._id)">x</button>
+            </li>
+        </ul>
+    </section>
+</template>
 
 <style scoped>
 .contact-list {
