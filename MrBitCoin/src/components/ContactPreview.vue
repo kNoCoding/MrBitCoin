@@ -4,6 +4,7 @@
         <small>{{ contact._id }}</small>
         <p>{{ contact.phone }}</p>
         <p>{{ contact.email }}</p>
+        <button @click="removeContact">x</button>
     </div>
 </template>
 
@@ -13,6 +14,11 @@ export default {
         contact: {
             type: Object,
             required: true,
+        }
+    },
+    methods: {
+        removeContact() {
+            this.$emit('remove', this.contact._id)
         }
     }
 }

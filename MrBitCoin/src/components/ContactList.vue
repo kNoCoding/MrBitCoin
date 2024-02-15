@@ -24,9 +24,8 @@ export default {
     <section class="contact-list">
         <h2>Contact list:</h2>
         <ul>
-            <li v-for="contact in contacts">
-                <ContactPreview :contact="contact" />
-                <button @click="onRemoveContact(contact._id)">x</button>
+            <li v-for="contact in contacts" :key="contact._id">
+                <ContactPreview :contact="contact" @remove="onRemoveContact(contact._id)"/>
             </li>
         </ul>
     </section>
