@@ -1,6 +1,6 @@
 <template>
     <footer>
-        <small>im the footer ㄟ( ▔, ▔ )ㄏ woo wee - working deploy? please?</small>
+        <small>im the footer ㄟ( ▔, ▔ )ㄏ woo wee - working deploy? please? porfavor??</small>
     </footer>
 </template>
 
