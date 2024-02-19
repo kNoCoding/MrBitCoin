@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "deploy": "git add . && git commit -m 'Prepare to deploy' && git push && npm run build && git checkout gh-pages && git pull origin gh-pages && xcopy /E /I /Y dist\\* . && git add -A && git commit -m 'Deploy' && git push origin gh-pages && git checkout main"
+    "deploy": "git add . && git commit -m \"Prepare to deploy\" && git push && npm run build && git checkout gh-pages && git pull origin gh-pages && xcopy /E /I /Y dist\\* . && git add -A && git commit -m \"Deploy\" && git push origin gh-pages && git checkout main"
   },
   "dependencies": {
     "axios": "^1.6.7",
