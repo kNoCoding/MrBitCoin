@@ -1,6 +1,6 @@
 <template>
     <footer>
-        <small>im the footer ㄟ( ▔, ▔ )ㄏ</small>
+        <small>im the footer ㄟ( ▔, ▔ )ㄏ how fun~ </small>
     </footer>
 </template>
 
