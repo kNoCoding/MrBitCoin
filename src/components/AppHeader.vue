@@ -6,6 +6,7 @@
             <ul>
                 <li><router-link to="/">home</router-link></li>
                 <li><router-link to="/contact">contact</router-link></li>
+                <li><router-link to="/chart">charts</router-link></li>
             </ul>
         </nav>
 

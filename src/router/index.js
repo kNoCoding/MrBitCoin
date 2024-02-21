@@ -19,7 +19,12 @@ const router = createRouter({
       path: '/contact/:contactId',
       name: 'contactDetails',
       component: ContactDetails
-    }
+    },
+    {
+      path: '/chart',
+      name: 'chart',
+      component: () => import('../components/Chart.vue')
+    },
   ]
 })
 
