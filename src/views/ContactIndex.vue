@@ -37,10 +37,6 @@ export default {
     async created() {
         this.contacts = await contactService.getContacts()
     },
-    updated() {
-        console.log('this.contacts', this.contacts)
-
-    },
     components: {
         ContactFilter,
         ContactList,

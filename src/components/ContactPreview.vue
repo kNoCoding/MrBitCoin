@@ -4,7 +4,10 @@
         <small>{{ contact._id }}</small>
         <p>{{ contact.phone }}</p>
         <p>{{ contact.email }}</p>
-        <button @click="removeContact">x</button>
+        <div class="contact-buttons">
+            <RouterLink :to="`/contact/${contact._id}`"><button>Details</button></RouterLink>
+            <button @click="removeContact">Detele</button>
+        </div>
     </div>
 </template>
 
@@ -33,27 +36,27 @@ export default {
     height: 100%;
 }
 
-.contact-preview * {
-    margin: 0;
-    padding: 0.25rem 0;
-    /* Add some vertical space between elements */
-}
-
 .contact-preview h2 {
-    font-size: 1.2rem;
     font-weight: bold;
     color: #333;
-    padding-bottom: 0.5rem;
-    /* Extra space below the title */
+    padding-bottom: 8px;
 }
 
 .contact-preview small {
     color: #666;
-    padding-bottom: 0.5rem;
-    /* Extra space below the ID */
+    padding-bottom: 8px;
 }
 
 .contact-preview p {
     line-height: 1.4;
+    padding-bottom: 8px;
+}
+
+.contact-buttons {
+    display: flex;
+    /* flex-flow: column; */
+    justify-content: start;
+    gap: 8px;
+    padding: 12px 0;
 }
 </style>
