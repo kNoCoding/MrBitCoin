@@ -14,15 +14,19 @@ export default {
     },
     methods: {
         async removeContact(contactId) {
-            await contactService.deleteContact(contactId)
-
             const idx = this.contacts.findIndex(contact => contact._id === contactId)
-            this.contacts.splice(idx, 1)
-
+            // this.contacts.splice(idx, 1) my try
+            if (idx !== -1) {
+                this.contacts.splice(idx, 1)
+                await contactService.deleteContact(contactId)
+            } else {
+                console.error('Contact ID not found:', contactId);
+            }
         },
         filterContacts(filterBy) {
             this.filterBy = filterBy
         },
+
     },
     computed: {
         filteredContacts() {
@@ -32,6 +36,10 @@ export default {
     },
     async created() {
         this.contacts = await contactService.getContacts()
+    },
+    updated() {
+        console.log('this.contacts', this.contacts)
+
     },
     components: {
         ContactFilter,
