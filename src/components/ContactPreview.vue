@@ -4,7 +4,10 @@
         <small>{{ contact._id }}</small>
         <p>{{ contact.phone }}</p>
         <p>{{ contact.email }}</p>
-        <button @click="removeContact">x</button>
+        <div class="contact-buttons">
+            <button @click="removeContact">Detele</button>
+            <RouterLink :to="`/contact/${contact._id}`"><button>Details</button></RouterLink>
+        </div>
     </div>
 </template>
 
