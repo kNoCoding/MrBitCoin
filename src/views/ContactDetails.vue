@@ -22,8 +22,6 @@ export default {
     },
     async created() {
         const { contactId } = this.$route.params
-        console.log('~~~~contactId', contactId)
-
         this.contact = await contactService.getContactById(contactId)
     }
 }
@@ -36,10 +34,6 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-button {
-    align-self: start;
 }
 
 .contact-card {
