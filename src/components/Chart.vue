@@ -94,11 +94,9 @@ export default {
 </script>
 
 <style scoped>
-main {
-    padding: 1rem;
-}
-
 .chart-section {
+    margin-top: 8px;
+
     padding: 1rem;
     background-color: #fff;
     border-radius: 8px;
