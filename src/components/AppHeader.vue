@@ -12,7 +12,7 @@
 
         <p>Hi, {{ userName }}</p>
 
-        <p>BTC Rate:{{ btcRate }}</p>
+        <!-- <p>BTC Rate:{{ btcRate }}</p> -->
     </header>
 </template>
 
