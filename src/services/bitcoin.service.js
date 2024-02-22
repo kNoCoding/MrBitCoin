@@ -24,7 +24,7 @@ async function getRate() {
     }
 }
 
-async function getMarketPriceHistory(amount = 1, timePeriod = 'days') {
+async function getMarketPriceHistory(amount = 3, timePeriod = 'months') {
     const cachedMarketPriceHistory = storageService.load(PRICE_HISTORY_KEY)
     if (cachedMarketPriceHistory) return cachedMarketPriceHistory
     try {
@@ -39,7 +39,7 @@ async function getMarketPriceHistory(amount = 1, timePeriod = 'days') {
     }
 }
 
-async function getAvgBlockSize(amount = 3, timePeriod = 'weeks') {
+async function getAvgBlockSize(amount = 3, timePeriod = 'months') {
     const cachedAverageBlockSize = storageService.load(BLOCK_SIZE_KEY)
     if (cachedAverageBlockSize) return cachedAverageBlockSize
     try {

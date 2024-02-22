@@ -1,7 +1,6 @@
 <script >
 import ContactFilter from '@/components/ContactFilter.vue'
 import ContactList from '@/components/ContactList.vue'
-import ContactPreview from '@/components/ContactPreview.vue'
 
 import { contactService } from '@/services/contact.service'
 
