@@ -2,17 +2,15 @@
     <header>
         <p class="logo"><router-link to="/">MrBitCoin</router-link></p>
 
-        <nav>
+        <button @click="toggleMenu" class="menu-button">Menu</button>
+
+        <nav v-show="!isMobile || menuOpen">
             <ul>
                 <li><router-link to="/">home</router-link></li>
                 <li><router-link to="/contact">contact</router-link></li>
                 <li><router-link to="/chart">charts</router-link></li>
             </ul>
         </nav>
-
-        <p>Hi, {{ userName }}</p>
-
-        <!-- <p>BTC Rate:{{ btcRate }}</p> -->
     </header>
 </template>
 
@@ -25,9 +23,23 @@ export default {
         return {
             userName: null,
             btcRate: null,
+            isMobile: false,
+            menuOpen: false,
+        }
+    },
+    methods: {
+        toggleMenu() {
+            this.menuOpen = !this.menuOpen;
+        },
+        checkMobile() {
+            this.isMobile = window.innerWidth < 768;
+            this.menuOpen = false;
         }
     },
     async mounted() {
+        this.checkMobile();
+        window.addEventListener('resize', this.checkMobile);
+
         try {
             this.userName = await userService.getUser().name
         } catch (error) {
@@ -39,6 +51,9 @@ export default {
         } catch (error) {
             console.error('Error fetching the BTC rate:', error)
         }
+    },
+    beforeDestroy() {
+        window.removeEventListener('resize', this.checkMobile);
     }
 
 }
@@ -86,6 +101,48 @@ a {
 
     &:hover {
         color: lightgray;
+    }
+}
+
+
+.menu-button {
+    display: none;
+    background-color: darkorange;
+    color: white;
+    border: none;
+    border-radius: .5em;
+    font-size: 1rem;
+}
+
+@media (max-width: 767px) {
+    header {
+        grid-template-columns: auto 1fr;
+        grid-template-areas:
+            "logo menu"
+            "nav nav";
+    }
+
+    .logo {
+        grid-area: logo;
+    }
+
+    .menu-button {
+        display: block;
+        grid-area: menu;
+    }
+
+    nav {
+        grid-area: nav;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 1rem;
+    }
+
+    nav ul li a {
+        display: block;
     }
 }
 </style>
