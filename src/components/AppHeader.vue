@@ -6,9 +6,9 @@
 
         <nav v-show="!isMobile || menuOpen">
             <ul>
-                <li><router-link to="/">home</router-link></li>
-                <li><router-link to="/contact">contact</router-link></li>
-                <li><router-link to="/chart">charts</router-link></li>
+                <li @click="closeMenu"><router-link to="/">home</router-link></li>
+                <li @click="closeMenu"><router-link to="/contact">contact</router-link></li>
+                <li @click="closeMenu"><router-link to="/chart">charts</router-link></li>
             </ul>
         </nav>
     </header>
@@ -34,7 +34,10 @@ export default {
         checkMobile() {
             this.isMobile = window.innerWidth < 768;
             this.menuOpen = false;
-        }
+        },
+        closeMenu() {
+            this.menuOpen = false;
+        },
     },
     async mounted() {
         this.checkMobile();
@@ -63,7 +66,7 @@ export default {
 header {
     display: grid;
     grid-auto-flow: column;
-    grid-template-columns: auto 1fr auto auto;
+    grid-template-columns: max-content max-content;
     column-gap: 1rem;
     align-items: center;
 
@@ -116,10 +119,12 @@ a {
 
 @media (max-width: 767px) {
     header {
-        grid-template-columns: auto 1fr;
+        grid-template-columns: max-content max-content;
         grid-template-areas:
             "logo menu"
             "nav nav";
+        justify-content: space-between;
+
     }
 
     .logo {
