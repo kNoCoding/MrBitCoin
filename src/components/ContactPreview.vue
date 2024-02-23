@@ -7,6 +7,7 @@
         <div class="contact-buttons">
             <RouterLink :to="`/contact/${contact._id}`"><button>Details</button></RouterLink>
             <button @click="removeContact">Detele</button>
+            <RouterLink :to="`contact/edit/${contact._id}`"><button>Edit</button></RouterLink>
         </div>
     </div>
 </template>

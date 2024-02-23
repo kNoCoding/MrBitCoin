@@ -14,7 +14,6 @@ export default {
     methods: {
         async removeContact(contactId) {
             const idx = this.contacts.findIndex(contact => contact._id === contactId)
-            // this.contacts.splice(idx, 1) my try
             if (idx !== -1) {
                 this.contacts.splice(idx, 1)
                 await contactService.deleteContact(contactId)
@@ -47,8 +46,8 @@ export default {
 <template>
     <main>
 
-        <h1>Im the contact page</h1>
-
+        <h1>Contacts</h1>
+        <RouterLink to="contact/edit"><button>Add a contact</button></RouterLink>
         <ContactFilter @filter="filterContacts" />
         <ContactList v-if="contacts" @remove="removeContact" :contacts="filteredContacts" />
     </main>
