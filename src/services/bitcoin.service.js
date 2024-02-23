@@ -30,8 +30,6 @@ async function getMarketPriceHistory(amount = 3, timePeriod = 'months') {
     try {
         const response = await axios.get(`https://api.blockchain.info/charts/market-price?timespan=${amount}${timePeriod}&format=json&cors=true`)
         storageService.save(PRICE_HISTORY_KEY, response.data)
-        console.log('response.data', response.data)
-
         return response.data
     } catch (error) {
         console.error('Error fetching the market price history(averageBlockSize):', error)
@@ -45,8 +43,6 @@ async function getAvgBlockSize(amount = 3, timePeriod = 'months') {
     try {
         const response = await axios.get(`https://api.blockchain.info/charts/avg-block-size?timespan=${amount}${timePeriod}&format=json&cors=true`)
         storageService.save(BLOCK_SIZE_KEY, response.data)
-        console.log('response.data', response.data)
-
         return response.data
     } catch (error) {
         console.error('Error fetching the average block size(marketPriceHistory):', error)

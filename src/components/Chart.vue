@@ -53,8 +53,6 @@ export default {
         try {
             const marketPriceHistory = await bitcoinService.getMarketPriceHistory();
             const avgBlockSize = await bitcoinService.getAvgBlockSize();
-            console.log('avgBlockSize', avgBlockSize)
-
 
             //Bar chart stuff
             const labels = marketPriceHistory.values.map(entry => new Date(entry.x * 1000).toLocaleDateString())
