@@ -58,4 +58,8 @@ main {
     overflow-y: auto;
 
 }
+
+button {
+    margin-top: 8px;
+}
 </style>

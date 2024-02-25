@@ -1,7 +1,6 @@
 <template>
     <section class="contact-filter">
-        <p>Filter</p>
-        <input type="text" @input="onFilter" v-model="filterBy.txt">
+        <input type="text" @input="onFilter" v-model="filterBy.txt" placeholder="Filter contacts">
     </section>
 </template>
 
@@ -23,6 +22,20 @@ export default {
 <style scoped>
 .contact-filter {
     width: 100%;
-    margin-bottom: 1rem;
+    margin: 1rem 0;
+}
+
+input {
+    padding: 6px 15px;
+    border-radius: 8px;
+    border-width: 0;
+    background-color: #f2f4f6;
+}
+
+input:focus {
+    outline: solid 1px;
+    background-color: #e0e2e5;
+    color: black;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 </style>
