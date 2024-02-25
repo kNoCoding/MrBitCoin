@@ -11,6 +11,14 @@ const options = {
         increment(state, { by }) {
             state.count += by
         }
+    },
+    actions: {
+        async incrementLater({ commit }, { by }) {
+            setTimeout(() => commit({ type: 'increment', by }), 1500)
+        }
+    },
+    getters: {
+        count(state) { return state.count }
     }
 }
 const store = createStore(options)

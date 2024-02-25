@@ -5,7 +5,7 @@
     <p>You're wallet balance is: <b>{{ userBalance }}</b></p>
     <p>The current BTC rate is: <b>{{ btcRate }}</b></p>
 
-    <h2>{{ $store.state.count }}</h2>
+    <h2>{{ count }}</h2>
     <button @click="inc(-1)">-</button>
     <button @click="inc(1)">+</button>
     <button @click="inc(10)">+10</button>
@@ -26,9 +26,12 @@ export default {
     }
   },
   methods: {
-    inc(by) {
-      this.$store.commit({ type: 'increment', by })
+    async inc(by) {
+      await this.$store.dispatch({ type: 'incrementLater', by })
     }
+  },
+  computed: {
+    count() { return this.$store.getters.count }
   },
   async mounted() {
 
