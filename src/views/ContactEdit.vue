@@ -26,8 +26,12 @@ export default {
     },
     methods: {
         async onSaveContact() {
-            const contact = await contactService.saveContact(this.contact)
-            this.$router.push('/contact')
+            try {
+                await this.$store.dispatch({ type: 'saveContact', contactToSave: this.contact })
+                this.$router.push('/contact')
+            } catch (err) {
+                console.log(err)
+            }
         }
     },
     async created() {
@@ -38,6 +42,9 @@ export default {
         } else {
             this.contact = contactService.getEmptyContact()
         }
+    },
+    beforeUpdate() {
+        console.log('this.contact', this.contact)
     }
 }
 </script>
