@@ -7,19 +7,21 @@ import { contactService } from '@/services/contact.service'
 export default {
     data() {
         return {
-            contacts: null,
+            // contacts: null,
             filterBy: { txt: '' }
         }
     },
     methods: {
         async removeContact(contactId) {
-            const idx = this.contacts.findIndex(contact => contact._id === contactId)
-            if (idx !== -1) {
-                this.contacts.splice(idx, 1)
-                await contactService.deleteContact(contactId)
-            } else {
-                console.error('Contact ID not found:', contactId);
-            }
+            await this.$store.dispatch({ type: 'removeContact', contactId })
+
+            // const idx = this.contacts.findIndex(contact => contact._id === contactId)
+            // if (idx !== -1) {
+            //     this.contacts.splice(idx, 1)
+            //     await contactService.deleteContact(contactId)
+            // } else {
+            //     console.error('Contact ID not found:', contactId);
+            // }
         },
         filterContacts(filterBy) {
             this.filterBy = filterBy
@@ -30,10 +32,12 @@ export default {
         filteredContacts() {
             const regex = new RegExp(this.filterBy.txt, 'i')
             return this.contacts.filter(contact => regex.test(contact.name))
-        }
+        },
+        contacts() { return this.$store.getters.contacts }
     },
     async created() {
-        this.contacts = await contactService.getContacts()
+        await this.$store.dispatch({ type: 'loadContacts' })
+        // this.contacts = await contactService.getContacts()
     },
     components: {
         ContactFilter,
@@ -57,5 +61,9 @@ export default {
 main {
     overflow-y: auto;
 
+}
+
+button {
+    margin-top: 8px;
 }
 </style>

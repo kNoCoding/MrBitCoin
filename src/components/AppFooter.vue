@@ -1,6 +1,6 @@
 <template>
     <footer>
-        <small>im the footer ㄟ( ▔, ▔ )ㄏ its working as expected!!~</small>
+        <small>im the footer <b>ㄟ( ▔, ▔ )ㄏ</b> <em>Count:<span>{{ $store.state.count }}</span></em></small>
     </footer>
 </template>
 

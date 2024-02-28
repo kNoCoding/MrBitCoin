@@ -2,9 +2,9 @@
     <section v-if="contact" class="contact-details">
         <RouterLink to="/contact"><button>Back</button></RouterLink>
         <div class="contact-card">
+            <h3>{{ contact.name }}</h3>
             <img :src="`https://robohash.org/${contact.name}`" :alt="`image of ${contact.name}`"
                 :title="`image of ${contact.name}`">
-            <h3>{{ contact.name }}</h3>
             <p>{{ contact.phone }}</p>
             <p>{{ contact.email }}</p>
             <small>{{ contact._id }}</small>

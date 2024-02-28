@@ -6,8 +6,8 @@
         <p>{{ contact.email }}</p>
         <div class="contact-buttons">
             <RouterLink :to="`/contact/${contact._id}`"><button>Details</button></RouterLink>
-            <button @click="removeContact">Detele</button>
             <RouterLink :to="`contact/edit/${contact._id}`"><button>Edit</button></RouterLink>
+            <button @click="removeContact" class="delete-button">Detele</button>
         </div>
     </div>
 </template>
@@ -59,5 +59,10 @@ export default {
     justify-content: start;
     gap: 8px;
     padding: 12px 0;
+}
+
+.delete-button:hover {
+    background-color: lightcoral;
+    font-weight: bold;
 }
 </style>

@@ -103,8 +103,16 @@ a {
     text-decoration: none;
 
     &:hover {
-        color: lightgray;
+        text-decoration: underline;
     }
+}
+
+p:hover a {
+    color: lightgray;
+}
+
+.logo>a:hover {
+    text-decoration: none;
 }
 
 
